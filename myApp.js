@@ -10,7 +10,8 @@ app.use(helmet.noSniff());
 app.use(
   helmet.ieNoOpen(),
   helmet.hsts({ maxAge: (timeInSeconds = ninetyDaysInSeconds), force: true }),
-  helmet.dnsPrefetchControl()
+  helmet.dnsPrefetchControl(),
+  helmet.noCache()
 );
 
 module.exports = app;
