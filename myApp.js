@@ -9,7 +9,8 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(
   helmet.ieNoOpen(),
-  helmet.hsts({ maxAge: (timeInSeconds = ninetyDaysInSeconds), force: true })
+  helmet.hsts({ maxAge: (timeInSeconds = ninetyDaysInSeconds), force: true }),
+  helmet.dnsPrefetchControl()
 );
 
 module.exports = app;
