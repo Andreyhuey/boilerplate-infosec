@@ -20,6 +20,21 @@ app.use(
   })
 );
 
+var bcrypt = require('bcrypt');
+
+const myPlaintextPassword = 'passw0rd!';
+const saltRounds = 13;
+const someOtherPlaintextPassword = 'jeeeeeeex!!!!';
+
+//START_SYNC
+var hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
+console.log(hash);
+var result = bcrypt.compareSync(myPlaintextPassword, hash);
+console.log(result);
+let result2 = bcrypt.compareSync(someOtherPlaintextPassword, hash);
+console.log(result2);
+//END_SYNC
+
 module.exports = app;
 const api = require('./server.js');
 app.use(express.static('public'));
