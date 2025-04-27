@@ -11,7 +11,13 @@ app.use(
   helmet.ieNoOpen(),
   helmet.hsts({ maxAge: (timeInSeconds = ninetyDaysInSeconds), force: true }),
   helmet.dnsPrefetchControl(),
-  helmet.noCache()
+  helmet.noCache(),
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'trusted-cdn.com'],
+    },
+  })
 );
 
 module.exports = app;
